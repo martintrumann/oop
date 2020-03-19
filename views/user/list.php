@@ -48,7 +48,7 @@ if(isset($deleteId)){
 			<td><?= $user->lastLogin ?></td>
 			<td><?= $user->status ?></td>
 			<td><form method="POST"><button name="delete" value="<?= $key ?>">Delete</button></form></td>
-			<td><a href="change.php?id=<?= $user->id ?>"><button>change</button></a></td>
+			<td><a href="?page=user/change&id=<?= $user->id ?>"><button>change</button></a></td>
 		</tr>
 	<?php endforeach; endif; ?>
 </table>
