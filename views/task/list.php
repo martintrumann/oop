@@ -28,6 +28,7 @@ if(isset($deleteId)){
 
 <form action="" method="POST">
 	<input type="text" name="name" />
+	<input type="text" name="desc" />
 	<button name="add" value="1">Add</button>
 </form>
 
