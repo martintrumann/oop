@@ -1,9 +1,7 @@
 <?php
-require("./database.php");
-
-require("./classes.php");
-
+require("./class/Task.php");
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+$task = Task::find($id);
 
 $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING);
 if($action == "change"){
@@ -27,8 +25,6 @@ if($action == "change"){
 		}
 	}
 }
-
-$task = Task::find($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

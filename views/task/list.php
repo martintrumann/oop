@@ -1,5 +1,5 @@
 <?php
-require("./class/task.php");
+require("./class/Task.php");
 $tasks = Task::all();
 
 $add = filter_input(INPUT_POST, "add", FILTER_SANITIZE_NUMBER_INT);

@@ -1,5 +1,5 @@
 <?php
-require("./class/user.php");
+require("./class/User.php");
 $users = User::all();
 
 $add = filter_input(INPUT_POST, "add", FILTER_SANITIZE_NUMBER_INT);
