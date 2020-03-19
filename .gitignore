@@ -1,0 +1,13 @@
+# ignore all swp files
+*.swp
+*.swo
+
+# ignore credentials
+database.php
+tags
+mysqlCon.js
+
+# ignore development files
+.dev*
+
+node_modules
