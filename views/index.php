@@ -1,16 +1,17 @@
 <?php
 
-$allowedPages = ["list", "change"];
+$allowedPages = ["task/list", "task/change", "user/list", "user/change"];
 
 $getPage = filter_input(INPUT_GET, "page", FILTER_SANITIZE_STRING);
 
 if(!isset($getPage)){
-	$page = "list";
-}elseif(in_array($page, $allowedPages)){
+	$page = "task/list";
+}elseif(in_array($getPage, $allowedPages)){
 	$page = $getPage;
 }else{
 	$page = "404";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@ if(!isset($getPage)){
 	<title></title>
 </head>
 <body>
+	<?php require "./views/menu.php" ?>
 	<?php require "./views/" . $page . ".php" ?>
 </body>
 </html>

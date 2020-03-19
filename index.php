@@ -1,7 +1,9 @@
 <?php
-require "database.php";
+if (!isset($_SESSION)){
+	session_start();
+}
 
-require "class/classes.php";
+require "database.php";
 
 require "views/index.php";
 ?>
