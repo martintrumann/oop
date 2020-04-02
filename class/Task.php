@@ -21,7 +21,7 @@ class Task{
 
 	public function insert(){
 		global $pdo;
-		$sql = "INSERT INTO tasks.Task (name, `desc`) VALUES (:name, :desc)";
+		$sql = "INSERT INTO Task (name, `desc`) VALUES (:name, :desc)";
 		$stmt = $pdo->prepare($sql);
 
 		$stmt->bindParam(":name", $this->name);
@@ -53,7 +53,7 @@ class Task{
 
 	public function delete(){
 		global $pdo;
-		$deletestmt = $pdo->prepare("DELETE FROM tasks.Task WHERE id=:id");
+		$deletestmt = $pdo->prepare("DELETE FROM Task WHERE id=:id");
 		$deletestmt->execute(["id"=> $this->id]);
 	}
 }
