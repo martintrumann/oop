@@ -21,7 +21,6 @@ if(isset($add)){
 
 	$user->insert();
 	array_push($users, $user);
-	header("Location: #");
 }
 
 $deleteId = filter_input(INPUT_POST, "delete", FILTER_SANITIZE_NUMBER_INT);
@@ -29,8 +28,9 @@ if(isset($deleteId)){
 	$users[$deleteId]->delete();
 
 	array_splice($users, $deleteId, 1);
-	header("Location: #");
 }
+
+$users = User::all();
 ?>
 
 <form action="" method="POST">

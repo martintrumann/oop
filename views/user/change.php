@@ -28,8 +28,11 @@ if(isset($id) && $change){
 	if($inArr["pass"] != $user->pass){
 		$user->pass			= password_hash($inArr["pass"], PASSWORD_DEFAULT);
 	}
+
+	$user->update();
 }
 
+$user = User::find($id);
 ?>
 <form style="display: grid; grid-template-columns: auto auto; align-items: center;" action="" method="POST">
 	<?php foreach($user as $key => $val): ?>

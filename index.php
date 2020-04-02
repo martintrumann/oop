@@ -5,13 +5,17 @@ if (!isset($_SESSION)){
 
 require "database.php";
 
-$allPages = ["task/list", "logout", "task/alter", "task/change", "user/list", "user/alter", "user/change"];
+$allPages = ["task/list", "task/alter", "task/change", "user/list", "user/alter", "user/change"];
 $allowedPages = ["task/list", "user/list"];
 
 $getPage = filter_input(INPUT_GET, "page", FILTER_SANITIZE_STRING);
 
 if(!isset($getPage)){
 	$page = "task/list";
+}elseif($getPage == "logout"){
+	require("./class/Auth.php");
+	Auth::logout();
+	header("Location: ?");
 }elseif(in_array($getPage, $allPages)){
 	if(in_array($getPage, $allowedPages)){
 		$page = $getPage;
@@ -23,6 +27,7 @@ if(!isset($getPage)){
 }else{
 	$page = "404";
 }
+
 ?>
 
 <!DOCTYPE html>

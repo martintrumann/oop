@@ -8,12 +8,11 @@ if($action == "login"){
 
 	$login = Auth::login($email, $pass);
 
-	if($login["success"]){
-		header("Location: #");
-		exit();
-	}else{
-		echo $login["error"];
-	}
+	if($login["success"]): ?>
+		<script type="text/javascript"> document.location = ''; </script>
+	<?php else:?>
+		<?= $login["error"]; ?>
+	<?php endif;
 }
 
 ?>
