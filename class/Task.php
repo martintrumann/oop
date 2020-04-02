@@ -38,7 +38,7 @@ class Task{
 
 	public function update(){
 		global $pdo;
-		$sql = "UPDATE Task SET name=:name desc=:desc WHERE id=:id";
+		$sql = "UPDATE Task SET name=:name, `desc`=:desc WHERE id=:id";
 
 		$stmt = $pdo->prepare($sql);
 
@@ -46,9 +46,7 @@ class Task{
 		$stmt->bindParam(":desc", $this->desc);
 		$stmt->bindParam(":id", $this->id);
 
-		$success = $stmt->execute();
-
-		return $success;
+		$stmt->execute();
 	}
 
 	public function delete(){

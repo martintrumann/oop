@@ -1,6 +1,5 @@
 <?php require("./class/Task.php");
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-$task = Task::find($id);
 
 $action = filter_input(INPUT_POST, "action", FILTER_SANITIZE_STRING);
 if($action == "change"){
@@ -16,15 +15,16 @@ if($action == "change"){
 	}
 
 	if(count($errors) == 0){
-		$bookstmt = $pdo->prepare("UPDATE Task SET name=:name, `desc`=:desc WHERE id=:id");
-		try {
-			$bookstmt->execute(["name"=> $name, "desc"=> $desc, "id" => $id]);
-			header("Location: #");
-		} catch(PDOExpection $e){
-			echo $e;
-		}
+		$task = Task::find($id);
+
+		$task->name = $name;
+		$task->desc = $desc;
+
+		$task->update();
 	}
 }
+
+$task = Task::find($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

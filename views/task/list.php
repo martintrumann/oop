@@ -21,8 +21,9 @@ if(isset($deleteId)){
 	$tasks[$deleteId]->delete();
 
 	array_splice($tasks, $deleteId, 1);
-	header("Location: #");
 }
+
+$tasks = Task::all();
 
 ?>
 
