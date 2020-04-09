@@ -58,14 +58,14 @@ if(!isset($getPage)){
 		<div class="bg-light border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">Tasker</div>
 			<div class="list-group list-group-flush">
-				<a href="?page=task/list" class="list-group-item list-group-item-action bg-light">Tasks</a>
-				<a href="?page=user/list" class="list-group-item list-group-item-action bg-light">Users</a>
 				<?php if(!empty($_SESSION["is_logged_in"])): ?>
-					<a href="?page=task/alter" class="list-group-item list-group-item-action bg-light">Change tasks</a>
-					<a href="?page=user/alter" class="list-group-item list-group-item-action bg-light">Change users</a>
-					<a href="?page=logout" class="list-group-item list-group-item-action bg-light">Logout</a>
+					<a href="?page=task/alter"	class="<?= $page == "task/alter"	? "active" : ""?> list-group-item list-group-item-action ">Change tasks</a>
+					<a href="?page=user/alter"	class="<?= $page == "user/alter" 	? "active" : ""?> list-group-item list-group-item-action ">Change users</a>
+					<a href="?page=logout"		class="<?= $page == "logout"		? "active" : ""?> list-group-item list-group-item-action ">Logout</a>
 				<?php else: ?>
-					<a href="?page=login" class="list-group-item list-group-item-action bg-light">Login</a>
+					<a href="?page=task/list"	class="<?= $page == "task/list"		? "active" : ""?> list-group-item list-group-item-action ">Tasks</a>
+					<a href="?page=user/list"	class="<?= $page == "user/list"		? "active" : ""?> list-group-item list-group-item-action ">Users</a>
+					<a href="?page=login"		class="<?= $page == "login"			? "active" : ""?> list-group-item list-group-item-action ">Login</a>
 				<?php endif ?>
 			</div>
 		</div>
@@ -89,17 +89,6 @@ if(!isset($getPage)){
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Dropdown
-							</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
 						</li>
 					</ul>
 				</div>

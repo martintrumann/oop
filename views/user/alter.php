@@ -33,22 +33,31 @@ if(isset($deleteId)){
 $users = User::all();
 ?>
 
-<form action="" method="POST">
+<form class="d-flex justify-content-around" action="" method="POST">
 	<input type="text" placeholder="E-mail" name="email" />
 	<input type="text" placeholder="First Name" name="firstName" />
 	<input type="text" placeholder="Last Name" name="lastName" />
 	<input type="password" placeholder="Password" name="pass" />
-	<button name="add" value="1">Add</button>
+	<button class="btn btn-success"name="add" value="1">Add</button>
 </form>
 
-<table>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Last Login</th>
+			<th>Status</th>
+			<th>Change</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
 	<?php if($users): foreach($users as $key => $user): ?>
 		<tr>
 			<td><?= $user->firstName . " " . $user->lastName ?></td>
 			<td><?= $user->lastLogin ?></td>
 			<td><?= $user->status ?></td>
-			<td><form method="POST"><button name="delete" value="<?= $key ?>">Delete</button></form></td>
-			<td><a href="?page=user/change&id=<?= $user->id ?>"><button>change</button></a></td>
+			<td><a href="?page=user/change&id=<?= $user->id ?>"><button class="btn btn-warning">change</button></a></td>
+			<td><form method="POST"><button name="delete" class="btn btn-danger" value="<?= $key ?>">Delete</button></form></td>
 		</tr>
 	<?php endforeach; endif; ?>
 </table>

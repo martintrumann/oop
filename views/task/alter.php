@@ -26,19 +26,27 @@ if(isset($deleteId)){
 $tasks = Task::all();
 ?>
 
-<form action="" method="POST">
+<form class="d-flex justify-content-around"action="" method="POST">
 	<input type="text" name="name" />
 	<input type="text" name="desc" />
-	<button name="add" value="1">Add</button>
+	<button class="btn btn-success" name="add" value="1">Add</button>
 </form>
 
-<table>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Change</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
 	<?php if($tasks): foreach($tasks as $key => $task): ?>
-	<tr>
-		<td><?= $task->name ?></td>
-		<td><?= $task->desc ?></td>
-		<td><form method="POST"><button name="delete" value="<?= $key ?>">Delete</button></form></td>
-		<td><a href="?page=task/change&id=<?= $task->id ?>"><button>change</button></a></td>
-	</tr>
+		<tr>
+			<td><?= $task->name ?></td>
+			<td><?= $task->desc ?></td>
+			<td><a href="?page=task/change&id=<?= $task->id ?>"><button class="btn btn-warning">change</button></a></td>
+			<td><form method="POST"><button name="delete" class="btn btn-danger" value="<?= $key ?>">Delete</button></form></td>
+		</tr>
 	<?php endforeach; endif; ?>
 </table>
