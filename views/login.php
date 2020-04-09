@@ -9,15 +9,31 @@ if($action == "login"){
 	$login = Auth::login($email, $pass);
 
 	if($login["success"]): ?>
-		<script type="text/javascript"> document.location = ''; </script>
+		<script type="text/javascript"> document.location = '?'; </script>
 	<?php else:?>
 		<?= $login["error"]; ?>
 	<?php endif;
 }
 
 ?>
-<form action="" method="POST">
-	<input type="text" name="email" placeholder="email" />
-	<input type="password" name="password" placeholder="password" />
-	<button name="action" value="login">Login</button>
-</form>
+<style>
+.login{
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	height:100%;
+}
+
+.login form{
+	display:grid;
+}
+
+</style>
+
+<main class="login">
+	<form action="" method="POST">
+		<input type="text" name="email" placeholder="email" />
+		<input type="password" name="password" placeholder="password" />
+		<button name="action" value="login">Login</button>
+	</form>
+</main>

@@ -5,7 +5,7 @@ if (!isset($_SESSION)){
 
 require "database.php";
 
-$allPages = ["task/list", "task/alter", "task/change", "user/list", "user/alter", "user/change"];
+$allPages = ["task/list", "login", "task/alter", "task/change", "user/list", "user/alter", "user/change"];
 $allowedPages = ["task/list", "user/list"];
 
 $getPage = filter_input(INPUT_GET, "page", FILTER_SANITIZE_STRING);
@@ -35,6 +35,16 @@ if(!isset($getPage)){
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<style>
+	html{
+		height:100%;
+		width:100%;
+	}
+
+	body{
+		height:100%;
+	}
+	</style>
 </head>
 <body>
 	<?php if($page != "login"): ?>
