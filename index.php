@@ -59,8 +59,8 @@ if(!isset($getPage)){
 			<div class="sidebar-heading">Tasker</div>
 			<div class="list-group list-group-flush">
 				<?php if(!empty($_SESSION["is_logged_in"])): ?>
-					<a href="?page=task/alter"	class="<?= $page == "task/alter"	? "active" : ""?> list-group-item list-group-item-action ">Change tasks</a>
-					<a href="?page=user/alter"	class="<?= $page == "user/alter" 	? "active" : ""?> list-group-item list-group-item-action ">Change users</a>
+					<a href="?page=task/alter"	class="<?= $page == "task/alter"	? "active" : ""?> list-group-item list-group-item-action ">Tasks</a>
+					<a href="?page=user/alter"	class="<?= $page == "user/alter" 	? "active" : ""?> list-group-item list-group-item-action ">Users</a>
 					<a href="?page=logout"		class="<?= $page == "logout"		? "active" : ""?> list-group-item list-group-item-action ">Logout</a>
 				<?php else: ?>
 					<a href="?page=task/list"	class="<?= $page == "task/list"		? "active" : ""?> list-group-item list-group-item-action ">Tasks</a>

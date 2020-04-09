@@ -3,7 +3,7 @@ class Auth{
 	public static function login($email, $password){
 		global $pdo;
 
-		$statement = $pdo->prepare('SELECT * FROM Account WHERE email = :email');
+		$statement = $pdo->prepare('SELECT * FROM User WHERE email = :email');
 		$statement->bindParam(":email", $email);
 
 		$statement->execute();
@@ -11,7 +11,7 @@ class Auth{
 		$account = $statement->fetch(PDO::FETCH_ASSOC);
 
 		if($account){
-			if(password_verify($password, $account["password"])){
+			if(password_verify($password, $account["pass"])){
 				$_SESSION["is_logged_in"] = 1;
 				return array("success" => 1);
 			} else {
