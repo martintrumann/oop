@@ -3,7 +3,13 @@ require("./class/Task.php");
 $tasks = Task::all();
 ?>
 
-<table>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+	</thead>
 	<?php if($tasks): foreach($tasks as $key => $task): ?>
 	<tr>
 		<td><?= $task->name ?></td>

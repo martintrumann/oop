@@ -3,7 +3,7 @@ require("./class/User.php");
 $users = User::all();
 
 ?>
-<table>
+<table class="table">
 	<thead>
 		<tr>
 			<th>Name</th>
