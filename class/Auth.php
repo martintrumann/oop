@@ -13,6 +13,11 @@ class Auth{
 		if($account){
 			if(password_verify($password, $account["pass"])){
 				$_SESSION["is_logged_in"] = 1;
+
+				$statement = $pdo->prepare( "UPDATE User SET lastLogin=NOW() WHERE id = :id" );
+				$statement->bindParam(":id", $account["id"]);
+				$statement->execute();
+
 				return array("success" => 1);
 			} else {
 				return array("success" => 0, "error" => "password wrong");

@@ -9,7 +9,7 @@ if($action == "login"){
 	$login = Auth::login($email, $pass);
 
 	if($login["success"]): ?>
-		<script type="text/javascript"> document.location = '?'; </script>
+		<script type="text/javascript"> document.location = '?page=task/alter'; </script>
 	<?php else:?>
 		<?= $login["error"]; ?>
 	<?php endif;
