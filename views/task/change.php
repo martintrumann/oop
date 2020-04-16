@@ -45,9 +45,9 @@ $task = Task::find($id);
 			<input name="id" type="hidden" value="<?=$task->id?>">
 			<input name="name" type="" value="<?=$task->name?>">
 			<input name="desc" type="" value="<?=$task->desc?>">
-			<button name="action" value="change">Change</button>
+			<button class="btn btn-warning" name="action" value="change">Change</button>
 		</form>
 	<?php endif?>
-	<a href="index.php"><button>Back</button></a>
+	<a href="?page=task/alter"><button class="btn btn-primary" >Back</button></a>
 </body>
 </html>

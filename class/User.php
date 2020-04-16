@@ -7,6 +7,7 @@ class User{
 	public $lastLogin;
 	public $pass;
 	public $status;
+	public $role;
 
 	public static function find($id = 0){
 		global $pdo;
@@ -18,7 +19,7 @@ class User{
 
 	public static function all(){
 		global $pdo;
-		$statement = $pdo->prepare('SELECT id, email, firstName, lastName, status, lastLogin FROM User');
+		$statement = $pdo->prepare('SELECT id, email, firstName, lastName, status, lastLogin, role FROM User');
 		$statement->execute();
 		return $statement->fetchAll(PDO::FETCH_CLASS, 'User');
 	}
@@ -39,7 +40,7 @@ class User{
 
 	public function insert(){
 		global $pdo;
-		$sql = "INSERT INTO User (email, firstName, lastName, lastLogin, pass, status) VALUES (:email, :firstName, :lastName, :lastLogin, :pass, :status)";
+		$sql = "INSERT INTO User (email, firstName, lastName, lastLogin, pass, status, role) VALUES (:email, :firstName, :lastName, :lastLogin, :pass, :status, :role)";
 		$stmt = $pdo->prepare($sql);
 
 		$stmt->bindParam(":email", $this->email);
@@ -48,6 +49,7 @@ class User{
 		$stmt->bindParam(":lastLogin", $this->lastLogin);
 		$stmt->bindParam(":pass", $this->pass);
 		$stmt->bindParam(":status", $this->status);
+		$stmt->bindParam(":role", $this->role);
 
 		$success = $stmt->execute();
 
@@ -60,13 +62,14 @@ class User{
 
 	public function update(){
 		global $pdo;
-		$sql = "UPDATE User SET email=:email, firstName=:firstName, lastName=:lastName, pass=:pass, status=:status WHERE id=:id)";
+		$sql = "UPDATE User SET email=:email, firstName=:firstName, lastName=:lastName, pass=:pass, status=:status, role=:role WHERE id=:id)";
 
 		$stmt->bindParam(":email", $this->email);
 		$stmt->bindParam(":lastName", $this->lastName);
 		$stmt->bindParam(":lastLogin", $this->lastLogin);
 		$stmt->bindParam(":pass", $this->pass);
 		$stmt->bindParam(":status", $this->status);
+		$stmt->bindParam(":role", $this->role);
 
 		$stmt->bindParam(":id", $this->id);
 

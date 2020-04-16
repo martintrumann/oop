@@ -11,6 +11,7 @@ if(isset($add)){
 
 	$task->name = $name;
 	$task->desc = $desc;
+	$task->user_id = $_SESSION["user_id"];
 
 	$task->insert();
 	array_push($tasks, $task);
@@ -45,8 +46,20 @@ $tasks = Task::all();
 		<tr>
 			<td><?= $task->name ?></td>
 			<td><?= $task->desc ?></td>
-			<td><a href="?page=task/change&id=<?= $task->id ?>"><button class="btn btn-warning">change</button></a></td>
-			<td><form method="POST"><button name="delete" class="btn btn-danger" value="<?= $key ?>">Delete</button></form></td>
+			<td>
+				<?php if($_SESSION["role"]> 100 || $task->user_id == $_SESSION["user_id"]): ?>
+					<a href="?page=task/change&id=<?= $task-> id ?> ">
+						<button class="btn btn-warning"> change</button>
+					</a>
+				<?php endif ?>
+			</td>
+			<td>
+				<?php if($_SESSION["role"] > 100 || $task->user_id == $_SESSION["user_id"]): ?>
+					<form method="POST">
+						<button name="delete" class="btn btn-danger" value="<?= $key ?> "> Delete</button>
+					</form>
+				<?php endif ?>
+			</td>
 		</tr>
 	<?php endforeach; endif; ?>
 </table>

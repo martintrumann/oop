@@ -8,14 +8,14 @@ $users = User::all();
 		<tr>
 			<th>Name</th>
 			<th>last Login</th>
-			<th>status</th>
+			<th>Role</th>
 		</tr>
 	</thead>
 	<?php if($users): foreach($users as $key => $user): ?>
 		<tr>
 			<td><?= $user->firstName . " " . $user->lastName ?></td>
 			<td><?= $user->lastLogin ?></td>
-			<td><?= $user->status ?></td>
+			<td><?= $user->role ?></td>
 		</tr>
 	<?php endforeach; endif; ?>
 </table>

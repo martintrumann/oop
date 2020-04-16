@@ -1,6 +1,7 @@
 <?php
 class Task{
 	public $id;
+	public $user_id;
 	public $name;
 	public $desc;
 
@@ -21,11 +22,12 @@ class Task{
 
 	public function insert(){
 		global $pdo;
-		$sql = "INSERT INTO Task (name, `desc`) VALUES (:name, :desc)";
+		$sql = "INSERT INTO Task (name, `desc`, user_id) VALUES (:name, :desc, :user_id)";
 		$stmt = $pdo->prepare($sql);
 
 		$stmt->bindParam(":name", $this->name);
 		$stmt->bindParam(":desc", $this->desc);
+		$stmt->bindParam(":user_id", $this->user_id);
 
 		$success = $stmt->execute();
 
@@ -38,12 +40,13 @@ class Task{
 
 	public function update(){
 		global $pdo;
-		$sql = "UPDATE Task SET name=:name, `desc`=:desc WHERE id=:id";
+		$sql = "UPDATE Task SET name=:name, `desc`=:desc, user_id=:user_id WHERE id=:id";
 
 		$stmt = $pdo->prepare($sql);
 
 		$stmt->bindParam(":name", $this->name);
 		$stmt->bindParam(":desc", $this->desc);
+		$stmt->bindParam(":user_id", $this->user_id);
 		$stmt->bindParam(":id", $this->id);
 
 		$stmt->execute();
